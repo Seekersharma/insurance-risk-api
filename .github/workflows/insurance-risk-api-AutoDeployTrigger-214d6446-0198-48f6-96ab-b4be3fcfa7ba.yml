@@ -1,38 +1,47 @@
 name: Trigger auto deployment for insurance-risk-api
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '**'
-      - '.github/workflows/insurance-risk-api-AutoDeployTrigger-214d6446-0198-48f6-96ab-b4be3fcfa7ba.yml'
+push:
+branches:
+- main
+paths:
+- '**'
+- '.github/workflows/insurance-risk-api-AutoDeployTrigger-214d6446-0198-48f6-96ab-b4be3fcfa7ba.yml'
 
-  workflow_dispatch:
+workflow_dispatch:
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+build-and-deploy:
+runs-on: ubuntu-latest
 
-    permissions:
-      id-token: write
-      contents: read
+```
+permissions:
+  id-token: write
+  contents: read
 
-    steps:
-      - name: Checkout to the branch
-        uses: actions/checkout@v2
+steps:
+  - name: Checkout to the branch
+    uses: actions/checkout@v4
 
-      - name: Azure Login
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.INSURANCERISKAPI_AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.INSURANCERISKAPI_AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.INSURANCERISKAPI_AZURE_SUBSCRIPTION_ID }}
+  - name: Azure Login
+    uses: azure/login@v2
+    with:
+      client-id: ${{ secrets.INSURANCERISKAPI_AZURE_CLIENT_ID }}
+      tenant-id: ${{ secrets.INSURANCERISKAPI_AZURE_TENANT_ID }}
+      subscription-id: ${{ secrets.INSURANCERISKAPI_AZURE_SUBSCRIPTION_ID }}
 
-      - name: Build and deploy
-        uses: azure/container-apps-deploy-action@v2
-        with:
-          appSourcePath: ${{ github.workspace }}
-          dockerfilePath: Dockerfile
-          containerAppName: insurance-risk-api
-          resourceGroup: insurance-risk-rg
+  - name: Build and deploy
+    uses: azure/container-apps-deploy-action@v2
+    with:
+      appSourcePath: ${{ github.workspace }}
+      dockerfilePath: Dockerfile
+
+      containerAppName: insurance-risk-api
+      resourceGroup: insurance-risk-rg
+
+      registryUrl: insuranceriskacr12345.azurecr.io
+      registryUsername: ${{ secrets.INSURANCERISKAPI_REGISTRY_USERNAME }}
+      registryPassword: ${{ secrets.INSURANCERISKAPI_REGISTRY_PASSWORD }}
+
+      imageToBuild: insuranceriskacr12345.azurecr.io/insurance-risk-api:${{ github.sha }}
+```
