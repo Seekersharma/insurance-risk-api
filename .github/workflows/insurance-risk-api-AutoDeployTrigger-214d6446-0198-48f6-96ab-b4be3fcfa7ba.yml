@@ -43,4 +43,3 @@ steps:
       registryPassword: ${{ secrets.INSURANCERISKAPI_REGISTRY_PASSWORD }}
 
       imageToBuild: insuranceriskacr12345.azurecr.io/insurance-risk-api:${{ github.sha }}
-```
