@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      -uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      -uses: actions/setup-python@v5
-      with:
-        python-version: '3.12'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       
-      -run: pip install -r requirements.txt
+      - run: pip install -r requirements.txt
 
-      -run: python src/train.py
+      - run: python src/train.py
 
-      -run: ls models
+      - run: ls models
