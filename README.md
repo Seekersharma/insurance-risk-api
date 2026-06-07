@@ -14,6 +14,7 @@ The application is built using:
 * Azure Container Registry
 * Azure Container Apps
 
+
 ---
 
 ## Live Application
@@ -69,7 +70,7 @@ Request:
 Response:
 
 {
-"prediction": 0
+"risk": 0
 }
 
 Note: Actual prediction values depend on the trained model.
@@ -88,14 +89,26 @@ pip install -r requirements.txt
 
 Run application:
 
-uvicorn src.api.main:app --reload
+uvicorn src.app:app --reload
 
 Open Swagger:
 
 http://localhost:8000/docs
 
 ---
+## Testing
 
+Run tests locally:
+
+```bash
+python -m pytest
+```
+
+Current coverage:
+
+- Health endpoint test
+- Prediction endpoint test
+--------
 ## CI/CD Pipeline
 
 The application is automatically deployed when code is pushed to the main branch.

@@ -15,5 +15,17 @@ def test_prediction():
         "/predict",
         json=payload
     )
-    
+    data = response.json()
+    assert "risk" in data
+    assert data["risk"] in ["Low", "Medium", "High"]
     assert response.status_code ==200
+    
+    
+def test_invalid_input():
+    payload = {
+        "age": 45
+    }
+
+    response = client.post("/predict", json=payload)
+
+    assert response.status_code == 422
