@@ -3,6 +3,7 @@ import pandas as pd
 
 model = joblib.load("models/risk_model.pkl")
 encoder = joblib.load("models/label_encoder.pkl")
+logger.info("Model loaded successfully")
 
 sample = pd.DataFrame([{
     "age": 45,
@@ -12,6 +13,7 @@ sample = pd.DataFrame([{
 }])
 
 prediction = model.predict(sample)
+logger.info( "Prediction completed successfully")
 
 risk = encoder.inverse_transform(prediction)
 

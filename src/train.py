@@ -1,4 +1,5 @@
 import pandas as pd
+import logger
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
@@ -38,9 +39,11 @@ model = RandomForestClassifier(
     random_state=42
 )
 model.fit(X,y_encoded)
+logger.info("Training completed successfully")
+
 
 os.makedirs("models", exist_ok=True)
-
+logger.info("Model saved successfully")
 joblib.dump( model,"models/risk_model.pkl")
 joblib.dump(encoder,"models/label_encoder.pkl")
 
