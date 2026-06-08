@@ -1,5 +1,5 @@
 import pandas as pd
-import logger
+from src.logger import logger
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
