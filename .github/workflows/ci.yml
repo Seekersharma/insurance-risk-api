@@ -19,6 +19,12 @@ jobs:
       
       - run: pip install -r requirements.txt
 
+      - run: pwd
+
+      -run: ls -R
+      
+      - run python-c "import sys; print(sys.path)"
+
       - run: pytest
       
       - run: python src/train.py

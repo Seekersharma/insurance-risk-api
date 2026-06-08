@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import pandas as pd
-from logger import logger
+from src.logger import logger
 
 app = FastAPI()
 logger.info("API started successfully")
