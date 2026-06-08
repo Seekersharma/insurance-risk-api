@@ -23,7 +23,7 @@ jobs:
 
       - run: ls -R
 
-      - run python-c "import sys; print(sys.path)"
+      - run: python -c "import sys; print(sys.path)"
 
       - run: pytest
       
