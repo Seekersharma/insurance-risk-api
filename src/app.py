@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from src.app_logger import logger
 import joblib
 import pandas as pd
-from app_logger import logger
+
 
 app = FastAPI()
 logger.info("API started successfully")

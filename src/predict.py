@@ -1,5 +1,6 @@
 import joblib
 import pandas as pd
+from app_logger import logger
 
 model = joblib.load("models/risk_model.pkl")
 encoder = joblib.load("models/label_encoder.pkl")
