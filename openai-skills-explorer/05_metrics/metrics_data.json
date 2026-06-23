@@ -1,0 +1,30 @@
+[
+  {
+    "method": "Inline Skill",
+    "input_tokens": 59,
+    "output_tokens": 1430,
+    "total_tokens": 1489,
+    "latency": 16629.54047600215
+  },
+  {
+    "method": "Local Skill",
+    "input_tokens": 213,
+    "output_tokens": 607,
+    "total_tokens": 820,
+    "latency": 6457.010835991241
+  },
+  {
+    "method": "GitHub Skill",
+    "input_tokens": null,
+    "output_tokens": null,
+    "total_tokens": null,
+    "latency": 0
+  },
+  {
+    "method": "Hosted Skill",
+    "input_tokens": null,
+    "output_tokens": null,
+    "total_tokens": null,
+    "latency": 0
+  }
+]
